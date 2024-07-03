@@ -1,4 +1,4 @@
-import { FaCartShopping } from 'react-icons/fa6'
+import { FaCaretDown, FaCartShopping } from 'react-icons/fa6'
 import { IoMdSearch } from 'react-icons/io'
 import DarkMode from './DarkMode'
 
@@ -26,6 +26,24 @@ const MenuLinks = [
   }
 ]
 
+const DropdownLinks = [
+  {
+    id: 1,
+    name: 'Trending Products',
+    link: '/#',
+  },
+  {
+    id: 2,
+    name: 'Brst Selling',
+    link: '/#',
+  },
+  {
+    id: 3,
+    name: 'Top Rated',
+    link: '/#',
+  }
+]
+
 function Navbar() {
   return (
     <div className=' bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40'>
@@ -41,12 +59,33 @@ function Navbar() {
                   MenuLinks.map((data, index) => {
                     return (
                       <li key={index}>
-                        <a href={data.link} className=' inline-block px-4 font-semibold text-gray-500 hover:text-black 
-                       dark:text-slate-400 dark:hover:text-white  duration-200'>{data.name}</a>
+                        <a href={data.link} className='inline-block px-4 font-semibold text-gray-500 hover:text-black dark:text-slate-400 dark:hover:text-white  duration-200'>{data.name}</a>
                       </li>
                     )
-                  })
-                }
+                  })}
+                  {/* Dropdown */}
+                  <li className='relative cursor-pointer group'>
+                    <a href='#' className=' flex items-center font-semibold text-gray-500 dark:hover:text-white transition-all duration-200 gap-[2px]'>
+                      Quick Links                    
+                      <span>
+                      <FaCaretDown className=' group-hover:rotate-180 duration-300'/>
+                    </span>
+                    </a>
+                  {/* Dropdown Links */}
+                  <div className=' absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white shadow-md dark:bg-gray-900 p-2 dark:text-white '>
+                    <ul className='space-y-2'>
+                      {
+                        DropdownLinks.map((data, index) => {
+                          return(
+                            <li key={index}>
+                              <a href={data.link} className=' text-gray-500 hover:text-black dark:hover:text-white duration-200 p-2 inline-block w-full hover:bg-primary/50 rounded-md font-semibold'>{data.name}</a>
+                            </li>
+                          )
+                        })
+                      }
+                    </ul>
+                  </div>
+                  </li>
               </ul>
             </div>
 
