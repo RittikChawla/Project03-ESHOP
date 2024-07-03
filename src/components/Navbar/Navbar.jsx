@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaCartShopping } from 'react-icons/fa6'
 import { IoMdSearch } from 'react-icons/io'
 import DarkMode from './DarkMode'
@@ -72,9 +71,7 @@ function Navbar() {
             </button>
 
             {/* Dark Mode Section */}
-            <aside>
               <DarkMode />
-            </aside>
           </div>
         </div>
       </div>

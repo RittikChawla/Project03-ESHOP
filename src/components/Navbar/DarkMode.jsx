@@ -1,22 +1,30 @@
 import React from 'react'
+import { useEffect } from 'react';
 import LightButton from "../../assets/website/light-mode-button.png";
 import DarkButton from "../../assets/website/dark-mode-button.png";
+
 
 function DarkMode() {
 
     const [theme, setTheme] = React.useState(
         localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
 
-    const element = document.documentElement;
 
-    React.useEffect(() => {
+        /* --------------  Tutorial Code --------------- */
+    // const element = document.documentElement;
+    // React.useEffect(() => {
+    //     localStorage.setItem('theme', theme);
+    //     if (theme === 'dark') {
+    //         element.classList.add('dark');
+    //     } else {
+    //         element.classList.remove('dark');
+    //     }
+    // });
+    
+    useEffect(() => {
         localStorage.setItem('theme', theme);
-        if (theme === 'dark') {
-            element.classList.add('dark-mode');
-        } else {
-            element.classList.remove('dark-mode');
-        }
-    })
+        document.documentElement.classList.toggle('dark', theme == 'dark');
+    }, [theme]);
 
     return (
         <div className=''>
